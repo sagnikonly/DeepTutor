@@ -18,6 +18,19 @@ system: |
     options (svg/chartjs/mermaid) when they are sufficient. Choose html only when
     "user interaction + state changes + mixed text/graphics" is the core experience.
 
+  Important product rule:
+  - For educational word problems, rate/time/distance questions, geometry diagrams
+    with adjustable measurements, physics simulations, or any prompt where sliders
+    or toggles would help the learner test cases, ALWAYS prefer "html" in auto mode.
+    The app expects a compact interactive widget identical to Google AI Mode cards:
+    a metric strip (3–5 key-value pills), one diagram area, and one or two controls.
+    Do NOT choose "svg" for these — the interactivity is essential.
+  - When choosing "html", include these in visual_elements:
+    * The specific controls needed (e.g. "speed slider 10-100 km/h")
+    * The metric pills to show (e.g. "K distance", "R distance", "Gap")
+    * The diagram type (e.g. "horizontal route with two position bars")
+    This structured detail helps the code generator build a precise widget.
+
   Return your analysis as a single JSON object. Do not include any text outside the JSON.
 
 user_template: |

@@ -4,10 +4,13 @@ system: |
 
   For SVG code, check:
   - Well-formed XML with proper xmlns
-  - Correct viewBox and dimensions
+  - Correct compact viewBox and dimensions; prefer viewBox="0 0 900 480"
   - Text readability (font size, contrast)
   - Proper use of colors and spacing
   - Missing or broken elements
+  - The SVG is a compact diagram that fits in a chat answer panel, not a tall
+    poster/slide/infographic. Remove large title banners, formula blocks,
+    multi-card lesson sections, and any content outside the viewBox.
 
   For Chart.js code, check:
   - Valid JavaScript object literal
@@ -23,6 +26,19 @@ system: |
   - Clear and readable node labels and edge descriptions
   - Proper subgraph structure and nesting if used
   - No syntax errors that would cause rendering failure
+
+  For HTML code, check:
+  - Complete self-contained HTML document with CSS and JavaScript inline.
+  - It behaves like a compact interactive widget inside a 900x420 iframe, not
+    a tall full-page lesson or poster.
+  - Educational word problems include useful controls such as sliders or
+    segmented choices, and those controls update the diagram and metric labels.
+  - The widget has one primary diagram area, concise labels, and no large
+    derivation blocks; the host page renders the written solution below.
+  - It supports dark mode via CSS variables / prefers-color-scheme and does
+    not assume a white-only page background.
+  - No external resources, inline onclick handlers, or DOM manipulation without
+    existence checks.
 
   If the code is already good, return it unchanged with changed=false.
   If you make improvements, return the optimized code with changed=true.
